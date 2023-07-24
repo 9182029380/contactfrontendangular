@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+
 import { UserRegistrationService } from '../user-registration.service';
+import { Contact } from '../contact';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,7 @@ import { UserRegistrationService } from '../user-registration.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  user : User = new User("","","","","");
+  contact : Contact = new Contact("","","","","");
   message: any;
 
   constructor(private service: UserRegistrationService){
@@ -17,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   public registerNow(){
-    let resp=this.service.doRegistration(this.user);
+    let resp=this.service.doRegistration(this.contact);
     resp.subscribe((data)=>this.message=data);
       }
 

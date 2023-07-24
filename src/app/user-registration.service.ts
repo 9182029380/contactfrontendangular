@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { Contact } from './contact';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +10,17 @@ export class UserRegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  public doRegistration(user: User) {
-    return this.http.post("http://localhost:9090/register", user, { responseType: 'text' as 'json' });
+  public doRegistration(contact: Contact) {
+    return this.http.post("http://localhost:8080/api/contacts", contact, { responseType: 'text' as 'json' });
   }
-  public getUsers() {
-    return this.http.get("http://localhost:9090/getAllUsers");
+  public getcontacts() {
+    return this.http.get("http://localhost:8080/api/contacts/contact");
   }
-  public getUserByEmail(email: any) {
-    return this.http.get("http://localhost:9090//findUser/" + email);
+  public getContactById(id: any) {
+    return this.http.get("http://localhost:8080/api/contacts/findid" + id);
   }
-  public deleteUser(id: any) {
-    return this.http.delete("http://localhost:9090/cancel/" + id);
+  public deleteContact(id: any) {
+    return this.http.delete("http://localhost:8080/api/contacts/contact/" + id);
   }
 }
 

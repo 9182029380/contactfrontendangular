@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { User } from '../user';
+
 import { UserRegistrationService } from '../user-registration.service';
 
 @Component({
@@ -8,23 +8,23 @@ import { UserRegistrationService } from '../user-registration.service';
   styleUrls: ['./search-delete.component.css']
 })
 export class SearchDeleteComponent implements OnInit  {
-  users:any;
-  email:string | undefined;
+  contact:any;
+  id:number | undefined;
   
   constructor(private service:UserRegistrationService) { }
 
-  public delteUser(id:number){
-    let resp= this.service.deleteUser(id);
-    resp.subscribe((data: any)=>this.users=data);
+  public delteContact(id:number){
+    let resp= this.service.deleteContact(id);
+    resp.subscribe((data: any)=>this.contact=data);
    }
-   public findUserByEmailId(){
-     let resp= this.service.getUserByEmail(this.email);
-     resp.subscribe((data: any)=>this.users=data);
+   public findContactById(){
+     let resp= this.service.getContactById(this.id);
+     resp.subscribe((data: any)=>this.contact=data);
     }
 
   
   ngOnInit() {
-    let resp=this.service.getUsers();
-    resp.subscribe((data: any)=>this.users=data);
+    let resp=this.service.getcontacts();
+    resp.subscribe((data: any)=>this.contact=data);
   }
 }
